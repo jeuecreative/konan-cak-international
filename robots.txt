@@ -1,0 +1,10 @@
+# robots.txt — Konan Cak International
+# Domain vor dem Launch anpassen.
+
+User-agent: *
+Allow: /
+
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+
+Sitemap: https://www.konancak-international.com/sitemap.xml
