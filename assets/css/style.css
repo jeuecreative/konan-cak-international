@@ -458,6 +458,16 @@ a:hover { color: var(--signalrot); }
   color: var(--text-leise);
 }
 
+.hero-medien .media {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .04)),
+    rgba(8, 21, 48, .35);
+  border-color: rgba(255, 255, 255, .18);
+  border-radius: var(--radius-lg);
+}
+.hero-medien .media-info { color: #A9BAD3; }
+.hero-medien .media-info span { color: #fff; }
+
 /* 08 FAKTENLEISTE ---------------------------------------------------- */
 .fakten {
   background: var(--weiss);
