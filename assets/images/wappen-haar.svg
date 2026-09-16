@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 114" role="img" aria-label="Wappen Haartransplantation">
+  <title>Wappen Haartransplantation</title>
+  <path d="M48 5 L88 19 V57 C88 83 68 101 48 109 C28 101 8 83 8 57 V19 Z"
+        fill="none" stroke="#2A6099" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M48 13 L81 24 V57 C81 78 64 93 48 100 C32 93 15 78 15 57 V24 Z"
+        fill="none" stroke="#C9A45A" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M56 36c-3 10-6 19-6 27" fill="none" stroke="#4A7AA8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M63 40c-6 10-10 18-11 26" fill="none" stroke="#4A7AA8" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M40 44c4 8 7 14 8 21" fill="none" stroke="#4A7AA8" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="48" cy="76" r="9" fill="none" stroke="#4A7AA8" stroke-width="3"/>
+  <path d="M30 88c6-5 30-5 36 0" fill="none" stroke="#C9A45A" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 4"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 114" role="img" aria-label="Wappen Augenheilkunde">
+  <title>Wappen Augenheilkunde</title>
+  <path d="M48 5 L88 19 V57 C88 83 68 101 48 109 C28 101 8 83 8 57 V19 Z"
+        fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M48 13 L81 24 V57 C81 78 64 93 48 100 C32 93 15 78 15 57 V24 Z"
+        fill="none" stroke="#C9A45A" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M20 62c9-13 47-13 56 0-9 13-47 13-56 0z" fill="none" stroke="#E7EEF8" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="48" cy="62" r="8.5" fill="none" stroke="#E7EEF8" stroke-width="2.6"/>
+  <circle cx="48" cy="62" r="3" fill="#C9A45A"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 114" role="img" aria-label="Wappen weitere Behandlungen">
+  <title>Wappen weitere Behandlungen</title>
+  <path d="M48 5 L88 19 V57 C88 83 68 101 48 109 C28 101 8 83 8 57 V19 Z"
+        fill="none" stroke="#2A6099" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M48 13 L81 24 V57 C81 78 64 93 48 100 C32 93 15 78 15 57 V24 Z"
+        fill="none" stroke="#C9A45A" stroke-width="1.4" stroke-linejoin="round"/>
+  <circle cx="34" cy="62" r="4.5" fill="#4A7AA8"/>
+  <circle cx="48" cy="62" r="4.5" fill="#4A7AA8"/>
+  <circle cx="62" cy="62" r="4.5" fill="#4A7AA8"/>
+  <path d="M30 80h36" stroke="#C9A45A" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
