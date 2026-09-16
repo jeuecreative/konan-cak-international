@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 114" role="img" aria-label="Konan Cak International">
+  <title>Konan Cak International</title>
+  <path d="M48 5 L88 19 V57 C88 83 68 101 48 109 C28 101 8 83 8 57 V19 Z"
+        fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linejoin="round"/>
+  <path d="M48 13 L81 24 V57 C81 78 64 93 48 100 C32 93 15 78 15 57 V24 Z"
+        fill="none" stroke="#C9A45A" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M37 44 V79" stroke="#FFFFFF" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M59 44 L42 61" stroke="#FFFFFF" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M44 59 L61 79" stroke="#FFFFFF" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M66 32 l2.1 4.6 4.6 2.1 -4.6 2.1 -2.1 4.6 -2.1 -4.6 -4.6 -2.1 4.6 -2.1 z" fill="#C9A45A"/>
+</svg>

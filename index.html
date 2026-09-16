@@ -38,10 +38,10 @@
 <header class="header">
   <div class="wrap header-inner">
     <a class="marke" href="index.html">
-      <img src="assets/images/logo-emblem.png" width="46" height="46" alt="Konan Cak International — Medical Travel &amp; Healthcare Agency">
+      <img class="marke-zeichen" src="assets/images/logo-marke.svg" width="40" height="48" alt="Konan Cak International — Medical Travel &amp; Healthcare Agency">
       <span class="marke-text">
-        <span class="marke-name">Konan <span>Cak</span></span>
-        <span class="marke-zusatz">International</span>
+        <span class="marke-name">Konan</span>
+        <span class="marke-zusatz">Cak International</span>
       </span>
     </a>
 
@@ -74,25 +74,25 @@
         <!-- Behandlungssuche: arbeitet vollständig im Browser, siehe assets/js/suche.js -->
         <form class="suche" data-suche role="search" aria-expanded="false" action="leistungen.html" method="get">
           <label class="visuell-versteckt" for="suche-feld">Behandlung suchen</label>
+          <div class="suche-eingabe">
           <div class="suche-feld">
+            <svg class="suche-lupe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                 stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.6-3.6"></path>
+            </svg>
             <input type="search" id="suche-feld" name="q" autocomplete="off"
-                   placeholder="Welche Behandlung suchen Sie?">
-            <button class="suche-knopf" type="submit" aria-label="Suche starten">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                   stroke-linecap="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="7"></circle>
-                <path d="m20 20-3.6-3.6"></path>
-              </svg>
-            </button>
+                   placeholder="Behandlung suchen, z. B. Haartransplantation">
+            <button class="suche-knopf" type="submit">Suchen</button>
           </div>
           <ul class="suche-vorschlaege" data-vorschlaege hidden></ul>
+          </div>
           <p class="suche-beispiele">
-            Häufig gesucht:
-            <button type="button" data-suchbegriff="Haartransplantation">Haartransplantation</button> ·
-            <button type="button" data-suchbegriff="Zahnimplantate">Zahnimplantate</button> ·
-            <button type="button" data-suchbegriff="Nasenkorrektur">Nasenkorrektur</button> ·
-            <button type="button" data-suchbegriff="Augenlasern">Augenlasern</button> ·
-            <button type="button" data-suchbegriff="Schlauchmagen">Schlauchmagen</button>
+            <button class="chip" type="button" data-suchbegriff="Haartransplantation">Haartransplantation</button>
+            <button class="chip" type="button" data-suchbegriff="Zahnimplantate">Zahnimplantate</button>
+            <button class="chip" type="button" data-suchbegriff="Nasenkorrektur">Nasenkorrektur</button>
+            <button class="chip" type="button" data-suchbegriff="Augenlasern">Augenlasern</button>
+            <button class="chip" type="button" data-suchbegriff="Schlauchmagen">Schlauchmagen</button>
           </p>
         </form>
 
@@ -348,10 +348,10 @@
     <div class="footer-grid">
       <div>
         <a class="marke footer-marke" href="index.html">
-          <img src="assets/images/logo-emblem.png" width="52" height="52" alt="" loading="lazy">
+          <img class="marke-zeichen" src="assets/images/logo-marke-hell.svg" width="44" height="52" alt="" loading="lazy">
           <span class="marke-text">
-            <span class="marke-name">Konan Cak</span>
-            <span class="marke-zusatz">International</span>
+            <span class="marke-name">Konan</span>
+            <span class="marke-zusatz">Cak International</span>
           </span>
         </a>
         <p class="footer-hinweis">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
@@ -411,7 +411,7 @@
       "@id": "https://www.konancak-international.com/#organisation",
       "name": "Konan Cak International",
       "url": "https://www.konancak-international.com/",
-      "logo": "https://www.konancak-international.com/assets/images/logo-emblem.png",
+      "logo": "https://www.konancak-international.com/assets/images/logo-marke.svg",
       "telephone": "+49-000-000000",
       "email": "kontakt@konancak-international.com",
       "address": {
