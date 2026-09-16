@@ -7,7 +7,7 @@
 <meta name="description" content="Platzhaltertext: Anfrageformular, Telefon, WhatsApp, E-Mail, Anfahrt und häufige Fragen zur Kontaktaufnahme.">
 <link rel="canonical" href="https://www.konancak-international.com/kontakt.html">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0E2148">
+<meta name="theme-color" content="#1E4B80">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
@@ -54,7 +54,6 @@
       <ul class="nav-liste">
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ablauf.html">Ablauf</a></li>
-        <li><a href="ratgeber.html">Ratgeber</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
@@ -167,12 +166,19 @@
         </ul>
       </div>
       <div class="reveal">
-        <div class="media media--breit">
+        <!-- Zwei-Klick-Lösung: Die Karte wird erst geladen, wenn die Kategorie
+             "Externe Inhalte" freigegeben ist. data-src vor dem Launch durch die
+             echte Google-Maps-Einbettungs-URL ersetzen. -->
+        <div class="media media--breit"
+             data-consent="extern"
+             data-titel="Standort auf Google Maps"
+             data-src="https://www.google.com/maps/embed?pb=PLATZHALTER">
           <p class="media-info">
             <span>Kartenbereich</span>
-            Google Maps wird aus Datenschutzgründen erst nach Ihrer<br>
-            Zustimmung geladen (Zwei-Klick-Lösung erforderlich).
+            Google Maps wird erst nach Ihrer Zustimmung geladen.<br>
+            Dabei wird Ihre IP-Adresse an Google übertragen.
           </p>
+          <button class="btn btn-linie consent-karte-btn" type="button" data-consent-oeffnen>Karte laden</button>
         </div>
       </div>
     </div>
@@ -232,12 +238,12 @@
       <div>
         <h4>Leistungen</h4>
         <ul>
-          <li><a href="leistung-haartransplantation.html">Haartransplantation</a></li>
-          <li><a href="leistung-zahnmedizin.html">Zahnmedizin & Implantologie</a></li>
-          <li><a href="leistung-plastische-chirurgie.html">Ästhetisch-plastische Chirurgie</a></li>
-          <li><a href="leistung-augenheilkunde.html">Augenheilkunde & Augenlaser</a></li>
-          <li><a href="leistung-orthopaedie.html">Orthopädie & Gelenkersatz</a></li>
-          <li><a href="leistung-adipositas.html">Adipositas-Chirurgie</a></li>
+          <li><a href="leistungen.html#haartransplantation">Haartransplantation</a></li>
+          <li><a href="leistungen.html#zahnmedizin">Zahnmedizin & Implantologie</a></li>
+          <li><a href="leistungen.html#plastische-chirurgie">Ästhetisch-plastische Chirurgie</a></li>
+          <li><a href="leistungen.html#augenheilkunde">Augenheilkunde & Augenlaser</a></li>
+          <li><a href="leistungen.html#orthopaedie">Orthopädie & Gelenkersatz</a></li>
+          <li><a href="leistungen.html#adipositas">Adipositas-Chirurgie</a></li>
         </ul>
       </div>
 
@@ -246,8 +252,7 @@
         <ul>
           <li><a href="ueber-uns.html">Über uns</a></li>
           <li><a href="ablauf.html">Ablauf</a></li>
-          <li><a href="ratgeber.html">Ratgeber</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="impressum.html">Impressum</a></li>
           <li><a href="datenschutz.html">Datenschutz</a></li>
         </ul>
@@ -269,11 +274,14 @@
       <ul>
         <li><a href="impressum.html">Impressum</a></li>
         <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="#" data-consent-oeffnen>Cookie-Einstellungen</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
+<script src="assets/js/consent.js" defer></script>
+<script src="assets/js/suche.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

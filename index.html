@@ -7,7 +7,7 @@
 <meta name="description" content="Platzhaltertext: ärztliche Vorabprüfung, geprüfte Partnerkliniken, schriftlicher Kostenplan, Reiseorganisation und Nachsorge.">
 <link rel="canonical" href="https://www.konancak-international.com/">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0E2148">
+<meta name="theme-color" content="#1E4B80">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
@@ -64,33 +64,93 @@
 
 <main id="inhalt">
 
-  <section class="hero">
+  <section class="hero hero--suche">
     <div class="wrap hero-inner">
       <div class="hero-text">
-        <p class="eyebrow eyebrow--invers">Medical Travel &amp; Healthcare Agency</p>
+        <p class="eyebrow eyebrow--invers">Eine Plattform. Alle Behandlungen.</p>
         <h1>Behandlung im Ausland — geprüft, geplant und <em>begleitet</em>.</h1>
-        <p class="hero-lede">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. Sed diam voluptua, at vero eos et accusam.</p>
+        <p class="hero-lede">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
 
-        <div class="btn-gruppe">
+        <!-- Behandlungssuche: arbeitet vollständig im Browser, siehe assets/js/suche.js -->
+        <form class="suche" data-suche role="search" aria-expanded="false" action="leistungen.html" method="get">
+          <label class="visuell-versteckt" for="suche-feld">Behandlung suchen</label>
+          <div class="suche-feld">
+            <input type="search" id="suche-feld" name="q" autocomplete="off"
+                   placeholder="Welche Behandlung suchen Sie?">
+            <button class="suche-knopf" type="submit" aria-label="Suche starten">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m20 20-3.6-3.6"></path>
+              </svg>
+            </button>
+          </div>
+          <ul class="suche-vorschlaege" data-vorschlaege hidden></ul>
+          <p class="suche-beispiele">
+            Häufig gesucht:
+            <button type="button" data-suchbegriff="Haartransplantation">Haartransplantation</button> ·
+            <button type="button" data-suchbegriff="Zahnimplantate">Zahnimplantate</button> ·
+            <button type="button" data-suchbegriff="Nasenkorrektur">Nasenkorrektur</button> ·
+            <button type="button" data-suchbegriff="Augenlasern">Augenlasern</button> ·
+            <button type="button" data-suchbegriff="Schlauchmagen">Schlauchmagen</button>
+          </p>
+        </form>
+
+        <ul class="kategorien">
+          <li>
+            <a class="kategorie" href="leistungen.html#zahnmedizin">
+              <img src="assets/images/wappen-dental-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Zahnmedizin</span>
+              <span class="kategorie-zusatz">Implantate, Veneers, Kronen</span>
+            </a>
+          </li>
+          <li>
+            <a class="kategorie" href="leistungen.html#haartransplantation">
+              <img src="assets/images/wappen-haar-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Haar</span>
+              <span class="kategorie-zusatz">FUE, DHI, PRP</span>
+            </a>
+          </li>
+          <li>
+            <a class="kategorie" href="leistungen.html#plastische-chirurgie">
+              <img src="assets/images/wappen-aesthetik-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Ästhetik</span>
+              <span class="kategorie-zusatz">Nase, Lider, Straffung</span>
+            </a>
+          </li>
+          <li>
+            <a class="kategorie" href="leistungen.html#augenheilkunde">
+              <img src="assets/images/wappen-auge-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Augen</span>
+              <span class="kategorie-zusatz">LASIK, SMILE, Linsen</span>
+            </a>
+          </li>
+          <li>
+            <a class="kategorie" href="leistungen.html#adipositas">
+              <img src="assets/images/wappen-bariatrie-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Adipositas</span>
+              <span class="kategorie-zusatz">Schlauchmagen, Bypass</span>
+            </a>
+          </li>
+          <li>
+            <a class="kategorie" href="leistungen.html">
+              <img src="assets/images/wappen-mehr-hell.svg" width="42" height="50" alt="" loading="lazy">
+              <span class="kategorie-name">Mehr</span>
+              <span class="kategorie-zusatz">Orthopädie, Check-up</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="btn-gruppe btn-gruppe--mitte">
           <a class="btn btn-invers" href="kontakt.html#anfrage">Ersteinschätzung anfordern</a>
           <a class="btn btn-linie-invers" href="ablauf.html">So läuft es ab</a>
         </div>
 
         <ul class="hero-marker">
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Consetetur sadipscing elitr sed.</li>
-          <li>At vero eos et accusam justo.</li>
+          <li>Geprüfte Kliniken</li>
+          <li>Fester Kostenplan</li>
+          <li>Persönliche Begleitung</li>
         </ul>
-      </div>
-
-      <div class="hero-medien">
-        <div class="media media--hoch">
-          <p class="media-info">
-            <span>/assets/images/hero.webp</span>
-            Beratungssituation oder Klinikmotiv, ruhig und sachlich<br>
-            Hochformat 3:4 · 1200 × 1600 px · WebP
-          </p>
-        </div>
       </div>
     </div>
   </section>
@@ -104,7 +164,8 @@
       </div>
       <div class="grid grid-3 reveal">
         <a class="karte" href="leistungen.html#haartransplantation">
-          <span class="karte-marke">Bereich 01</span>
+          <img class="wappen" src="assets/images/wappen-haar.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 01</span>
           <h3>Haartransplantation</h3>
           <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. At vero eos et accusam et justo duo dolores et ea rebum, stet clita kasd gubergren.</p>
           <ul class="merkmale">
@@ -114,7 +175,8 @@
           <span class="karte-link textlink">Details</span>
         </a>
         <a class="karte" href="leistungen.html#zahnmedizin">
-          <span class="karte-marke">Bereich 02</span>
+          <img class="wappen" src="assets/images/wappen-dental.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 02</span>
           <h3>Zahnmedizin & Implantologie</h3>
           <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
           <ul class="merkmale">
@@ -124,7 +186,8 @@
           <span class="karte-link textlink">Details</span>
         </a>
         <a class="karte" href="leistungen.html#plastische-chirurgie">
-          <span class="karte-marke">Bereich 03</span>
+          <img class="wappen" src="assets/images/wappen-aesthetik.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 03</span>
           <h3>Ästhetisch-plastische Chirurgie</h3>
           <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
           <ul class="merkmale">
@@ -134,7 +197,8 @@
           <span class="karte-link textlink">Details</span>
         </a>
         <a class="karte" href="leistungen.html#augenheilkunde">
-          <span class="karte-marke">Bereich 04</span>
+          <img class="wappen" src="assets/images/wappen-auge.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 04</span>
           <h3>Augenheilkunde & Augenlaser</h3>
           <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
           <ul class="merkmale">
@@ -144,7 +208,8 @@
           <span class="karte-link textlink">Details</span>
         </a>
         <a class="karte" href="leistungen.html#orthopaedie">
-          <span class="karte-marke">Bereich 05</span>
+          <img class="wappen" src="assets/images/wappen-mehr.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 05</span>
           <h3>Orthopädie & Gelenkersatz</h3>
           <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.</p>
           <ul class="merkmale">
@@ -154,7 +219,8 @@
           <span class="karte-link textlink">Details</span>
         </a>
         <a class="karte" href="leistungen.html#adipositas">
-          <span class="karte-marke">Bereich 06</span>
+          <img class="wappen" src="assets/images/wappen-bariatrie.svg" width="56" height="66" alt="" loading="lazy">
+          <span class="karte-marke karte-marke--nach-wappen">Bereich 06</span>
           <h3>Adipositas-Chirurgie</h3>
           <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias.</p>
           <ul class="merkmale">
@@ -330,6 +396,7 @@
       <ul>
         <li><a href="impressum.html">Impressum</a></li>
         <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="#" data-consent-oeffnen>Cookie-Einstellungen</a></li>
       </ul>
     </div>
   </div>
@@ -375,6 +442,8 @@
 }
 </script>
 
+<script src="assets/js/consent.js" defer></script>
+<script src="assets/js/suche.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
