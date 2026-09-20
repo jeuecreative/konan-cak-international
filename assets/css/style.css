@@ -313,6 +313,7 @@ a:hover { color: var(--marine-600); }
   text-decoration: none;
   padding: .25rem 0;
 }
+.marke picture { display: contents; }
 .marke img {
   width: 66px;
   height: 54px;
@@ -1485,7 +1486,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .feld-reihe { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .marke-name { font-size: 1rem; }
-  .marke img { width: 52px; height: 43px; }
+  .marke picture { display: contents; }
+.marke img { width: 52px; height: 43px; }
   .marke-name { font-size: .95rem; letter-spacing: .05em; }
   .marke-zusatz { font-size: .5rem; letter-spacing: .2em; }
   .btn { width: 100%; }
