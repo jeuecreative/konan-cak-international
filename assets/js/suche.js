@@ -98,8 +98,14 @@
   var liste = formular.querySelector('[data-vorschlaege]');
   if (!feld || !liste) return;
 
+  var meldung = formular.querySelector('[data-suchmeldung]');
   var aktuelleTreffer = [];
   var markiert = -1;
+
+  // Screenreader erfahren ueber diesen Bereich, wie viele Vorschlaege es gibt.
+  function melden(text) {
+    if (meldung) meldung.textContent = text;
+  }
 
   function normalisieren(text) {
     return text
@@ -152,7 +158,7 @@
 
     if (!eingabe || eingabe.trim().length < 2) {
       liste.hidden = true;
-      formular.setAttribute('aria-expanded', 'false');
+      melden('');
       return;
     }
 
@@ -162,7 +168,7 @@
       leer.innerHTML = 'Dazu haben wir keinen passenden Eintrag. <a href="kontakt.html#anfrage">Schildern Sie uns Ihr Anliegen</a> — wir melden uns zurück.';
       liste.appendChild(leer);
       liste.hidden = false;
-      formular.setAttribute('aria-expanded', 'true');
+      melden('Keine passende Behandlung gefunden.');
       return;
     }
 
@@ -193,7 +199,9 @@
     });
 
     liste.hidden = false;
-    formular.setAttribute('aria-expanded', 'true');
+    melden(treffer.length === 1
+      ? '1 Vorschlag gefunden.'
+      : treffer.length + ' Vorschläge gefunden.');
   }
 
   function markierungSetzen(richtung) {
@@ -215,7 +223,7 @@
 
   feld.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowDown') { e.preventDefault(); markierungSetzen(1); }
-    if (e.key === 'Escape') { liste.hidden = true; formular.setAttribute('aria-expanded', 'false'); }
+    if (e.key === 'Escape') { liste.hidden = true; melden(''); }
   });
 
   liste.addEventListener('keydown', function (e) {
@@ -223,7 +231,7 @@
     if (e.key === 'ArrowUp') { e.preventDefault(); markierungSetzen(-1); }
     if (e.key === 'Escape') {
       liste.hidden = true;
-      formular.setAttribute('aria-expanded', 'false');
+      melden('');
       feld.focus();
     }
   });
@@ -243,7 +251,7 @@
   document.addEventListener('click', function (e) {
     if (formular.contains(e.target)) return;
     liste.hidden = true;
-    formular.setAttribute('aria-expanded', 'false');
+    melden('');
   });
 
   // Beispiel-Begriffe unter der Suche

@@ -34,9 +34,11 @@
   --azur:          #4A7AA8;  /* Linien, Icons, Sekundärblau       */
   --gold:          #C9A45A;  /* Akzent der Wappen – Linien/Flächen*/
   --gold-800:      #8F6E2E;  /* Gold als Text auf Hell (Kontrast) */
-  --signalrot:     #B01621;  /* nur Primär-CTA                    */
-  --signalrot-700: #8C1119;
-  --silber:        #AEB9C8;  /* Metallic-Detail                   */
+  --markenrot:     #8C1219;  /* Rot der Wortmarke, aus der Logodatei */
+  --markenrot-800: #6E0C12;  /* dunkler, für Hover                  */
+  --silber:        #AEB9C8;  /* Metallic-Detail, nur Flächen      */
+  --auf-dunkel:    #D2DDEC;  /* Kleintext auf Marine, ab 4,8:1     */
+  --feldrand:      #7C8CA3;  /* Formularrahmen, 3,4:1 auf Weiß     */
   --linie:         #D9E2EF;  /* Hairlines                         */
   --linie-dunkel:  rgba(255, 255, 255, .18);
   --papier:        #EDF2F9;  /* Seitenhintergrund, aus Konzept    */
@@ -102,9 +104,13 @@ hr { border: 0; border-top: 1px solid var(--linie); margin: var(--space-6) 0; }
 
 ::selection { background: var(--marine); color: #fff; }
 
+/* Doppelter Fokusring: der goldene Kern hebt sich vom dunklen Saum ab,
+   der Saum wiederum von hellen Flächen. Dadurch bleibt der Fokus auf
+   jedem Untergrund sichtbar (WCAG 1.4.11). */
 :focus-visible {
   outline: 3px solid var(--gold);
-  outline-offset: 3px;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(9, 26, 56, .9);
   border-radius: 2px;
 }
 
@@ -159,7 +165,7 @@ strong { font-weight: 650; color: var(--marine); }
   background: var(--gold);
   flex: none;
 }
-.eyebrow--invers { color: var(--silber); }
+.eyebrow--invers { color: var(--auf-dunkel); }
 
 .lede {
   font-size: var(--fs-lede);
@@ -189,7 +195,7 @@ strong { font-weight: 650; color: var(--marine); }
 .section-papier { background: var(--papier); }
 .section-marine { background: var(--marine); color: var(--text-invers); }
 .section-marine h2, .section-marine h3 { color: #fff; }
-.section-marine .lede { color: #C2CEE0; }
+.section-marine .lede { color: var(--auf-dunkel); }
 
 .section-kopf { max-width: 720px; margin-bottom: clamp(2rem, 1rem + 3vw, 3.25rem); }
 .section-kopf--mitte { margin-inline: auto; text-align: center; }
@@ -229,8 +235,8 @@ a:hover { color: var(--marine-600); }
 .btn:hover { --btn-bg: var(--marine-600); --btn-bd: var(--marine-600); color: #fff; transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 
-.btn-rot { --btn-bg: var(--signalrot); --btn-bd: var(--signalrot); }
-.btn-rot:hover { --btn-bg: var(--signalrot-700); --btn-bd: var(--signalrot-700); }
+.btn-rot { --btn-bg: var(--markenrot); --btn-bd: var(--markenrot); }
+.btn-rot:hover { --btn-bg: var(--markenrot-800); --btn-bd: var(--markenrot-800); }
 
 .btn-linie { --btn-bg: transparent; --btn-fg: var(--marine); --btn-bd: var(--silber); }
 .btn-linie:hover { --btn-bg: var(--marine); --btn-fg: #fff; --btn-bd: var(--marine); }
@@ -261,7 +267,7 @@ a:hover { color: var(--marine-600); }
 /* 06 HEADER & NAVIGATION --------------------------------------------- */
 .topbar {
   background: var(--tiefsee);
-  color: #B9C6DA;
+  color: #C6D3E6;
   font-size: var(--fs-small);
 }
 .topbar-inner {
@@ -272,7 +278,12 @@ a:hover { color: var(--marine-600); }
   min-height: 40px;
   padding-block: .4rem;
 }
-.topbar a { color: #fff; text-decoration: none; }
+.topbar a {
+  display: inline-block;
+  padding: .35rem 0;          /* Zielgröße mind. 24 px hoch */
+  color: #fff;
+  text-decoration: none;
+}
 .topbar a:hover { color: #fff; text-decoration: underline; }
 .topbar-notiz { display: flex; align-items: center; gap: .5rem; }
 .topbar-kontakt { display: flex; gap: var(--space-5); }
@@ -290,28 +301,43 @@ a:hover { color: var(--marine-600); }
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  min-height: 98px;
+  min-height: 104px;
 }
 
-.marke { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-.marke img { width: 76px; height: 62px; flex: none; }
-.marke-text { display: flex; flex-direction: column; line-height: 1; }
+/* Marke: Emblem oben, Wortmarke darunter — wie im Originallogo */
+.marke {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45rem;
+  text-decoration: none;
+  padding: .25rem 0;
+}
+.marke img {
+  width: 66px;
+  height: 54px;
+  flex: none;
+  transform: translateX(4px);  /* optischer Ausgleich, siehe Schwerpunkt des Emblems */
+}
+.marke-text { display: flex; flex-direction: column; align-items: center; line-height: 1; }
 .marke-name {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: .04em;
+  letter-spacing: .07em;
   color: var(--marine);
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.marke-name span { color: var(--gold-800); }
+.marke-name span { color: var(--markenrot); }
 .marke-zusatz {
   font-family: var(--font-utility);
-  font-size: .6rem;
-  letter-spacing: .3em;
+  font-size: .56rem;
+  letter-spacing: .26em;
   text-transform: uppercase;
   color: var(--text-leise);
-  margin-top: .3rem;
+  margin-top: .34rem;
+  white-space: nowrap;
 }
 
 .nav { display: flex; align-items: center; gap: var(--space-5); }
@@ -411,7 +437,7 @@ a:hover { color: var(--marine-600); }
   color: #fff;
   box-shadow: inset 0 -.28em 0 rgba(201, 164, 90, .9);
 }
-.hero-text p { color: #C6D2E4; }
+.hero-text p { color: #CFDBEC; }
 .hero-lede { font-size: var(--fs-lede); max-width: 46ch; margin-bottom: var(--space-6); }
 
 .hero-marker {
@@ -422,7 +448,7 @@ a:hover { color: var(--marine-600); }
   margin: var(--space-6) 0 0;
   padding: 0;
   font-size: var(--fs-small);
-  color: #C6D2E4;
+  color: #CFDBEC;
 }
 .hero-marker li { display: flex; align-items: center; gap: .5rem; }
 .hero-marker li::before {
@@ -592,7 +618,9 @@ a.karte:hover h3 { color: var(--marine-600); }
   background: rgba(255, 255, 255, .05);
   border-color: var(--linie-dunkel);
 }
-.karte-invers p { color: #C2CEE0; }
+.karte-invers p { color: var(--auf-dunkel); }
+.karte-invers .karte-marke { color: var(--auf-dunkel); }
+.karte-invers .merkmale li { color: var(--auf-dunkel); }
 
 .merkmale { list-style: none; margin: var(--space-3) 0 0; padding: 0; font-size: var(--fs-small); }
 .merkmale li { padding-left: 1.1rem; position: relative; color: var(--text-leise); }
@@ -641,7 +669,7 @@ a.karte:hover h3 { color: var(--marine-600); }
   color: var(--marine);
   margin-bottom: var(--space-4);
 }
-.rail-stopp:last-child .rail-punkt { border-color: var(--gold); background: var(--gold); color: #fff; }
+.rail-stopp:last-child .rail-punkt { border-color: var(--gold); background: var(--gold); color: var(--tiefsee); font-weight: 700; }
 .rail-stopp h3 { font-size: 1.0625rem; margin-bottom: .35rem; }
 .rail-stopp p { font-size: .875rem; color: var(--text-leise); margin: 0; }
 .rail-dauer {
@@ -756,7 +784,7 @@ textarea {
   font-size: .9375rem;
   color: var(--text);
   background: var(--weiss);
-  border: 1px solid var(--silber);
+  border: 1px solid var(--feldrand);
   border-radius: var(--radius);
   transition: border-color var(--transition), box-shadow var(--transition);
 }
@@ -769,7 +797,11 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--marine);
   box-shadow: 0 0 0 3px rgba(14, 33, 72, .12);
 }
-input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(9, 26, 56, .9);
+}
 
 .checkbox {
   display: grid;
@@ -780,7 +812,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   color: var(--text-leise);
   margin-bottom: var(--space-5);
 }
-.checkbox input { width: 18px; height: 18px; margin-top: .15rem; accent-color: var(--marine); }
+.checkbox input {
+  width: 24px;
+  height: 24px;
+  margin-top: 0;
+  accent-color: var(--marine);
+  cursor: pointer;
+}
 .checkbox label { font: inherit; text-transform: none; letter-spacing: 0; margin: 0; color: inherit; }
 
 .formhinweis { font-size: .75rem; color: var(--text-leise); margin-top: var(--space-4); }
@@ -798,12 +836,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
 }
 .ctaband h2 { color: #fff; margin-bottom: var(--space-3); }
-.ctaband p { color: #C2CEE0; margin: 0; }
+.ctaband p { color: var(--auf-dunkel); margin: 0; }
 
 /* 16 FOOTER ---------------------------------------------------------- */
 .footer {
   background: var(--tiefsee);
-  color: #A9B8CE;
+  color: #C6D3E6;
   font-size: var(--fs-small);
   padding-block: var(--space-8) var(--space-5);
 }
@@ -814,7 +852,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   padding-bottom: var(--space-7);
   border-bottom: 1px solid var(--linie-dunkel);
 }
-.footer h4 {
+.footer .footer-titel {
   color: #fff;
   font-family: var(--font-utility);
   font-size: .7rem;
@@ -824,17 +862,24 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   margin-bottom: var(--space-4);
 }
 .footer ul { list-style: none; margin: 0; padding: 0; }
-.footer li { margin-bottom: .55rem; }
-.footer a { color: #A9B8CE; text-decoration: none; }
+.footer li { margin-bottom: .3rem; }
+.footer a {
+  display: inline-block;
+  padding: .28rem 0;          /* Zielgröße mind. 24 px hoch */
+  color: #C6D3E6;
+  text-decoration: none;
+}
 .footer a:hover { color: #fff; text-decoration: underline; }
-.footer p { color: #A9B8CE; }
+.footer p { color: #C6D3E6; }
 .footer .marke-name { color: #fff; }
 .footer .marke-zusatz { color: var(--silber); }
-.footer-marke img { width: 76px; height: 62px; }
+.footer-marke { align-items: flex-start; }
+.footer-marke .marke-text { align-items: flex-start; }
+.footer-marke img { width: 72px; height: 59px; transform: translateX(-3px); }
 .footer-hinweis {
   margin-top: var(--space-4);
-  font-size: .75rem;
-  color: #8195AF;
+  font-size: .8125rem;
+  color: #B3C2D8;
   max-width: 42ch;
 }
 .footer-unten {
@@ -843,10 +888,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   justify-content: space-between;
   gap: var(--space-3);
   padding-top: var(--space-5);
-  font-size: .75rem;
-  color: #8195AF;
+  font-size: .8125rem;
+  color: #B3C2D8;
 }
-.footer-unten ul { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.footer-unten ul { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
 
 /* 17 MEDIEN-PLATZHALTER ---------------------------------------------- */
 /* Wird 1:1 durch <img> ersetzt, sobald die Bilddateien vorliegen.      */
@@ -882,17 +927,17 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
 }
 .seitenkopf h1 { color: #fff; margin-bottom: var(--space-3); }
-.seitenkopf p { color: #C2CEE0; max-width: 58ch; margin: 0; }
+.seitenkopf p { color: var(--auf-dunkel); max-width: 58ch; margin: 0; }
 
 .breadcrumb {
   font-family: var(--font-utility);
   font-size: .7rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--silber);
+  color: var(--auf-dunkel);
   margin-bottom: var(--space-4);
 }
-.breadcrumb a { color: var(--silber); text-decoration: none; }
+.breadcrumb a { color: var(--auf-dunkel); text-decoration: underline; text-underline-offset: 3px; }
 .breadcrumb a:hover { color: #fff; }
 
 .fliesstext h2 { margin-top: var(--space-7); }
@@ -914,13 +959,19 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .datenblatt { width: 100%; border-collapse: collapse; font-size: var(--fs-small); }
 .datenblatt th, .datenblatt td { text-align: left; padding: .8rem 0; border-bottom: 1px solid var(--linie); vertical-align: top; }
 .datenblatt th { width: 34%; color: var(--text-leise); font-weight: 500; }
+.datenblatt td a { display: inline-block; padding: .25rem 0; }   /* Zielgröße */
 
 .datenblatt--invers th, .datenblatt--invers td { border-bottom-color: var(--linie-dunkel); }
-.datenblatt--invers th { color: #8FA3BF; }
+.datenblatt--invers th { color: var(--auf-dunkel); }
 .datenblatt--invers td { color: #fff; }
 
 /* Verlinkte Etappen im Rail */
-.rail-stopp h3 a { color: inherit; text-decoration: none; }
+.rail-stopp h3 a {
+  display: inline-block;
+  padding: .22rem 0;
+  color: inherit;
+  text-decoration: none;
+}
 .rail-stopp h3 a:hover { color: var(--marine-600); }
 
 /* Porträt-Platzhalter innerhalb einer Karte */
@@ -955,7 +1006,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 }
 .suche-feld:focus-within {
   border-color: var(--gold);
-  box-shadow: 0 18px 46px -22px rgba(6, 18, 40, .75), 0 0 0 4px rgba(201, 164, 90, .35);
+  box-shadow: 0 18px 46px -22px rgba(6, 18, 40, .75),
+              0 0 0 3px var(--gold),
+              0 0 0 7px rgba(9, 26, 56, .9);
 }
 .suche-lupe { width: 21px; height: 21px; flex: none; color: var(--azur); }
 
@@ -972,7 +1025,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   appearance: none;
 }
 .suche-feld input::-webkit-search-cancel-button { appearance: none; }
-.suche-feld input::placeholder { color: #8195AF; }
+.suche-feld input::placeholder { color: #5E7091; }
 .suche-feld input:focus { outline: none; box-shadow: none; }
 
 .suche-knopf {
@@ -998,7 +1051,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   gap: .5rem;
   margin: var(--space-4) 0 0;
   font-size: .8125rem;
-  color: #A9BCD6;
+  color: var(--auf-dunkel);
   max-width: none;
 }
 .suche-beispiele .chip {
@@ -1109,9 +1162,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   letter-spacing: .02em;
 }
 .kategorie-zusatz {
-  font-size: .72rem;
+  font-size: .75rem;
   line-height: 1.45;
-  color: #B7C6DA;
+  color: var(--auf-dunkel);
 }
 
 /* Wappen auf hellem Grund (Karten, Leistungsabschnitte) */
@@ -1355,14 +1408,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .text-mitte { text-align: center; }
 
 /* Scroll-Reveal – dezent, nur Opazität + kleine Verschiebung */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 600ms ease, transform 600ms cubic-bezier(.22, .68, .32, 1);
   will-change: opacity, transform;
 }
-.reveal.ist-sichtbar { opacity: 1; transform: none; }
-.js-aus .reveal { opacity: 1; transform: none; }
+.js .reveal.ist-sichtbar { opacity: 1; transform: none; }
 
 /* ---- RESPONSIVE ---------------------------------------------------- */
 @media (max-width: 1080px) {
@@ -1380,7 +1432,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   .nav {
     position: fixed;
     inset: 0 0 auto;
-    top: var(--header-hoehe, 98px);
+    top: var(--header-hoehe, 104px);
     display: block;
     background: #fff;
     border-bottom: 1px solid var(--linie);
@@ -1389,7 +1441,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
     transform: translateY(-120%);
     visibility: hidden;
     transition: transform 260ms cubic-bezier(.3, .7, .3, 1), visibility 260ms;
-    max-height: calc(100dvh - var(--header-hoehe, 98px));
+    max-height: calc(100dvh - var(--header-hoehe, 104px));
     overflow-y: auto;
   }
   .nav.ist-offen { transform: translateY(0); visibility: visible; }
@@ -1433,7 +1485,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
   .feld-reihe { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .marke-name { font-size: 1rem; }
-  .marke img { width: 60px; height: 49px; }
+  .marke img { width: 52px; height: 43px; }
+  .marke-name { font-size: .95rem; letter-spacing: .05em; }
+  .marke-zusatz { font-size: .5rem; letter-spacing: .2em; }
   .btn { width: 100%; }
   .btn-gruppe .btn { width: auto; flex: 1 1 auto; }
   .fakten-liste { grid-template-columns: 1fr; }
