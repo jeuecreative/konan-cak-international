@@ -1,10 +1,14 @@
 # Konan Cak International — Website
 
-Erstellt von Eue Design · Stand 20.09.2026
+Erstellt von Eue Design · Stand 21.10.2026
 
 Statische Website aus handgeschriebenem HTML, CSS und JavaScript.
 Kein Redaktionssystem, keine Frameworks, keine externen Dienste.
 Läuft auf jedem gängigen Webhosting.
+
+**Neu in dieser Fassung:** Alle Blindtexte sind durch die redaktionellen Texte
+aus dem Dokument „Website-Texte Konan Cak International" ersetzt. Dazu ist die
+Seite `faq.html` hinzugekommen.
 
 ---
 
@@ -15,6 +19,7 @@ konan-cak-international/
 ├── index.html              Startseite
 ├── leistungen.html         Behandlungsbereiche
 ├── ablauf.html             Ablauf in sechs Etappen
+├── faq.html                Häufige Fragen
 ├── ueber-uns.html          Über uns
 ├── kontakt.html            Kontakt und Anfrageformular
 ├── impressum.html
@@ -63,9 +68,46 @@ kein Server benötigt, weil keine externen Ressourcen geladen werden.
 
 ## 3. Vor dem Livegang anzupassen
 
-### 3.1 Domain eintragen
+### 3.1 Offene Angaben in eckigen Klammern
 
-In allen sieben HTML-Dateien steht die Platzhalterdomain
+Im sichtbaren Text stehen noch **34 Platzhalter in eckigen Klammern**. Sie
+markieren Fakten, die nur der Auftraggeber kennt. Jeder davon muss vor dem
+Livegang ersetzt oder der Satz gestrichen werden.
+
+| Seite | Was fehlt |
+|---|---|
+| index.html, leistungen.html, faq.html | `[und weiteren Ländern]` — nur stehen lassen, wenn es stimmt, sonst streichen |
+| leistungen.html | Kontrollintervalle Haartransplantation `[3, 6, 12]`, Gültigkeit des Röntgenbildes `[6]`, Nachsorgedauer `[12]` |
+| ablauf.html | Höhe der Anzahlung `[X %]` |
+| ueber-uns.html | Sitz `[Stadt]`, Gründungsjahr `[Jahr]`, Gründungsgeschichte, vier Meilensteine, drei Teammitglieder mit Namen und Funktion, Städte der Partnerkliniken, Akkreditierungen, Auswahlkriterien |
+| kontakt.html | Anfahrt: Haltestelle, Autobahnabfahrt, Parkmöglichkeiten |
+| faq.html | Prüfkriterien der Partnerkliniken |
+| impressum.html, datenschutz.html | sämtliche Rechtstexte |
+
+Die drei Teamkarten auf „Über uns" sind besonders wichtig: echte Namen, Fotos
+und Qualifikationen schaffen Vertrauen und helfen Suchmaschinen, die
+medizinische Kompetenz einzuordnen.
+
+### 3.2 Punkte für die rechtliche Prüfung
+
+Die Texte sind bewusst zurückhaltend formuliert und enthalten keine
+Heilversprechen. Folgende Stellen brauchen dennoch eine fachliche Freigabe,
+bevor die Seite online geht:
+
+| Thema | Wo | Worum es geht |
+|---|---|---|
+| Vergütungsmodell | ablauf.html (Kosten), faq.html („Was kostet Ihre Vermittlung?") | Es wird offengelegt, dass Beratung kostenfrei ist, aber nicht, wie Konan Cak verdient. Ob eine Offenlegungspflicht besteht, bitte prüfen lassen. |
+| Antwortzeiten | ablauf.html Etappe 01, faq.html, Kopfzeile | „innerhalb eines Werktags" und „24–48 Stunden" sind Zusagen. Nur stehen lassen, wenn sie eingehalten werden. |
+| Ästhetische Eingriffe | leistungen.html Bereich 03 | Werbung für Schönheitsoperationen unterliegt dem Heilmittelwerbegesetz. |
+| Sicherheitsaussage | faq.html („Ist eine Behandlung im Ausland sicher?") | Risikodarstellung und Formulierung „Garantieren kann ein Behandlungsergebnis niemand". |
+| Krankenkasse | faq.html | Aussage zur Kostenübernahme fachlich bestätigen lassen. |
+| Reiseleistungen | ablauf.html Etappe 04 | Wer Flug, Hotel und Transfer gebündelt vermittelt, kann unter das Pauschalreiserecht fallen. |
+| Versicherungshinweis | ablauf.html (Checkliste) | Aussage zu Auslandsreise-Krankenversicherungen prüfen. |
+| Gesundheitsdaten | kontakt.html, datenschutz.html | Einwilligung und Weitergabe an Partnerärzte nach Artikel 9 DSGVO. |
+
+### 3.3 Domain eintragen
+
+In allen acht HTML-Dateien steht die Platzhalterdomain
 `https://www.konancak-international.com`. Sie kommt vor in:
 
 - `<link rel="canonical" …>`
@@ -76,7 +118,7 @@ In allen sieben HTML-Dateien steht die Platzhalterdomain
 
 Am einfachsten über Suchen und Ersetzen in allen Dateien.
 
-### 3.2 Kontaktdaten ersetzen
+### 3.4 Kontaktdaten ersetzen
 
 | Platzhalter | kommt vor in |
 |---|---|
@@ -85,16 +127,10 @@ Am einfachsten über Suchen und Ersetzen in allen Dateien.
 | `Musterstraße 1, 00000 Musterstadt` | Fußzeile, Kontaktseite, Impressum |
 | `wa.me/490000000000` | Kontaktseite |
 
-### 3.3 Texte
-
-Sämtlicher Fließtext ist Lorem-Ipsum-Platzhalter. Die Überschriften sind
-inhaltlich gemeint und geben vor, was in den jeweiligen Abschnitt gehört.
-Die Länge der Platzhalter entspricht ungefähr der benötigten Textmenge.
-
-### 3.4 Bilder
+### 3.5 Bilder
 
 Die grauen Flächen im Layout sind beschriftet mit Dateiname, Motiv,
-Seitenverhältnis und Auflösung. Benötigt werden neun Bilder:
+Seitenverhältnis und Auflösung. Benötigt werden zwölf Bilder:
 
 | Datei | Motiv | Format |
 |---|---|---|
@@ -107,16 +143,10 @@ Seitenverhältnis und Auflösung. Benötigt werden neun Bilder:
 | `orthopaedie.webp` | Physiotherapie oder Frühmobilisation | 16:9 · 1600 × 900 |
 | `adipositas.webp` | Beratungsgespräch, respektvoll | 16:9 · 1600 × 900 |
 | `team-beratung.webp` | echte Beratungssituation | 3:4 · 1200 × 1600 |
+| `team-01.webp` bis `team-03.webp` | Porträts der Ansprechpartner | 1:1 · 800 × 800 |
 
 Beim Einsetzen bitte `width`, `height`, `alt` und `loading="lazy"` setzen —
 `alt` beschreibt, was zu sehen ist, sonst geht die Barrierefreiheit verloren.
-
-### 3.5 Rechtstexte
-
-`impressum.html` und `datenschutz.html` sind Gerüste mit korrekter Gliederung,
-aber ohne verbindlichen Inhalt. Da über das Formular Gesundheitsdaten nach
-Artikel 9 DSGVO eingehen können, ist eine anwaltliche Prüfung vor dem Livegang
-erforderlich. Eue Design erstellt keine Rechtstexte.
 
 ### 3.6 Formularversand
 
@@ -127,12 +157,6 @@ mit Auftragsverarbeitungsvertrag benötigt. Die Stelle ist in
 
 Medizinische Unterlagen sollten nicht per unverschlüsselter E-Mail übertragen
 werden. Dafür ist ein gesonderter, gesicherter Upload nötig.
-
-### 3.7 Patientenstimmen
-
-Falls der Bereich genutzt wird: Erfundene oder nicht überprüfbare Bewertungen
-sind wettbewerbsrechtlich unzulässig. Ohne echte Bewertungen entfällt der
-Abschnitt ersatzlos.
 
 ---
 
@@ -166,7 +190,34 @@ werden.
 
 ---
 
-## 5. Barrierefreiheit
+## 5. Suchmaschinen und KI-Suche
+
+Jede Seite hat einen eigenen Title und eine eigene Description aus dem
+Textdokument. Ergänzt sind:
+
+- **Organisationsdaten** (`MedicalBusiness`) auf der Startseite, mit
+  Beschreibung, Sprachen, Fachbereichen und Platzhaltern für Gründungsjahr und
+  Profile in sozialen Netzwerken
+- **FAQ-Daten** (`FAQPage`) auf `faq.html` mit allen zwölf Fragen, damit
+  Suchmaschinen und KI-Assistenten die Antworten direkt übernehmen können
+- `sitemap.xml` mit allen sechs indexierbaren Seiten; Impressum und
+  Datenschutz stehen auf `noindex`
+
+Die FAQ-Seite ist bewusst für KI-Suche gebaut: Jede Antwort steht für sich und
+nennt den Firmennamen, statt nur auf den Kontext der Seite zu verweisen.
+
+Vor dem Livegang die strukturierten Daten mit dem Google Rich Results Test
+prüfen, nachdem die Platzhalter ersetzt sind.
+
+**Hinweis zur Navigation:** Die FAQ-Seite ist über die Fußzeile und von der
+Kontaktseite aus verlinkt, nicht über die Hauptnavigation. Das hält die
+Navigation bei den vereinbarten vier Punkten. Soll die Seite prominenter
+stehen, lässt sich der Punkt in `<ul class="nav-liste">` auf allen Seiten
+ergänzen.
+
+---
+
+## 6. Barrierefreiheit
 
 Die Seite wurde gegen WCAG 2.2 Stufe AA geprüft:
 
@@ -185,7 +236,17 @@ Die Seite wurde gegen WCAG 2.2 Stufe AA geprüft:
 
 ---
 
-## 6. Nach dem Livegang
+## 7. Englische Fassung
+
+Das Textdokument enthält neben dem deutschen auch einen englischen Reiter.
+Eingebaut ist bisher nur die deutsche Fassung. Eine englische Version braucht
+eigene Dateien unter `/en/`, `hreflang`-Auszeichnung in allen Seiten und eine
+Sprachumschaltung in der Kopfzeile. Das ist ein eigener Arbeitsschritt und
+nicht Teil dieser Lieferung.
+
+---
+
+## 8. Nach dem Livegang
 
 - Google Search Console einrichten und `sitemap.xml` einreichen
 - Google Unternehmensprofil anlegen
@@ -195,13 +256,13 @@ Die Seite wurde gegen WCAG 2.2 Stufe AA geprüft:
 
 ---
 
-## 7. Technische Eckdaten
+## 9. Technische Eckdaten
 
 | | |
 |---|---|
-| Seiten | 7 |
+| Seiten | 8 |
 | Externe Requests | 0 |
 | JavaScript | 3 Dateien, zusammen rund 18 KB, mit `defer` geladen |
 | Schriften | Systemschriften, keine Webfonts |
-| Breakpoints geprüft | 320, 375, 390, 430, 768, 1024, 1440, 1920 px |
+| Breakpoints geprüft | 320, 375, 390, 430, 768, 1024, 1280, 1440, 1920 px |
 | Browser | alle aktuellen; das Logo hat für ältere Umgebungen einen PNG-Rückfall |

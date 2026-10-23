@@ -567,6 +567,7 @@ a:hover { color: var(--marine-600); }
   transform: rotate(-45deg);
 }
 .pruefliste strong { display: block; }
+.pruefliste strong a { display: inline-block; padding: .22rem 0; }   /* Zielgröße */
 .pruefliste p { font-size: var(--fs-small); color: var(--text-leise); margin: .15rem 0 0; }
 
 .problemliste { list-style: none; margin: 0; padding: 0; }
