@@ -39,7 +39,7 @@ konan-cak-international/
     ├── css/
     │   └── style.css
     ├── js/
-    │   ├── main.js         Navigation, Einblendungen, Anfrage als E-Mail
+    │   ├── main.js         Navigation, Einblendungen
     │   ├── suche.js        Behandlungssuche
     │   └── consent.js      Einwilligungsverwaltung
     └── images/
@@ -160,55 +160,82 @@ Seitenverhältnis und Auflösung. Benötigt werden zwölf Bilder:
 Beim Einsetzen bitte `width`, `height`, `alt` und `loading="lazy"` setzen —
 `alt` beschreibt, was zu sehen ist, sonst geht die Barrierefreiheit verloren.
 
-### 3.6 Anfrageformular — Versand per E-Mail-Programm
+### 3.6 Die Anfrage — vorbereitete E-Mail statt Formular
 
-Das Formular wird **nicht** über einen Server verschickt. Beim Klick auf
-„Anfrage per E-Mail senden" baut `assets/js/main.js` aus den Feldern Betreff
-und Text einer fertigen E-Mail und öffnet damit das E-Mail-Programm der
-Besucherin. Abgeschickt wird die Nachricht erst dort, von Hand.
+Die Website hat **kein Eingabeformular**. Auf der Kontaktseite steht ein Knopf
+„Jetzt kontaktieren". Ein Klick öffnet das E-Mail-Programm der Besucherin mit
+einer bereits vorbereiteten Nachricht: Empfänger, Betreff und die abgefragten
+Zeilen stehen schon drin, ausgefüllt wird im E-Mail-Programm.
 
-**Warum so:**
+So sieht die vorbereitete Nachricht aus:
 
-- kein Server, kein Formulardienst, kein Auftragsverarbeitungsvertrag nötig
-- es laufen keine Gesundheitsdaten über die Website und über keinen fremden
-  Dienst — das Formular ist reine Vorlage, gespeichert wird nichts
-- die Anfrage landet direkt im Postfach, mit der echten Absenderadresse;
-  eine Antwort ist dadurch einfacher als bei einem Formulardienst
-- wer absendet, sieht vorher genau, was er verschickt
+```
+An:       kontakt@konancak-international.com
+Betreff:  Anfrage Ersteinschätzung
 
-**Was dabei beachtet werden muss:**
+Guten Tag,
 
-- Auf Geräten ohne eingerichtetes E-Mail-Programm passiert beim Klick nichts
-  Sichtbares. Deshalb erscheint nach dem Absenden eine Meldung mit der
-  Adresse sowie ein Knopf „Angaben in die Zwischenablage kopieren".
-- Ältere E-Mail-Programme schneiden sehr lange Vorlagen ab. Das Skript
-  begrenzt die Länge daher auf 1 900 Zeichen und setzt bei Bedarf sichtbar
-  `[Text gekürzt — bitte im E-Mail-Programm ergänzen]` ans Ende.
-- Die Anfrage erscheint nicht in einer Statistik. Wenn gezählt werden soll,
-  wie viele Anfragen eingehen, geht das nur über die eingehenden E-Mails.
+ich möchte eine kostenfreie und unverbindliche Ersteinschätzung anfordern.
 
-**Empfängeradresse ändern:** in `kontakt.html` und `en/contact.html` am
-`<form>`-Element, dort stehen zwei Stellen mit derselben Adresse:
+Vor- und Nachname:
+Telefon / WhatsApp:
+Behandlungsbereich:
+Worum es geht (Beschwerden oder Wunsch, seit wann):
+Gewünschter Zeitraum:
 
-```html
-<form data-formular
-      data-mailto="kontakt@konancak-international.com"
-      action="mailto:kontakt@konancak-international.com"
-      method="post" enctype="text/plain">
+Befunde, Röntgenbilder oder Fotos hänge ich dieser E-Mail an, sofern vorhanden.
+
+Freundliche Grüße
 ```
 
-`data-mailto` nutzt das Skript, `action` ist der Rückfallweg, falls
-JavaScript abgeschaltet ist. Beide müssen gleich lauten.
+**Warum das für diesen Kunden passt:** kein Server, kein Formulardienst, kein
+Auftragsverarbeitungsvertrag. Es laufen keine Gesundheitsdaten über die
+Website oder über einen fremden Anbieter — die Nachricht geht direkt von
+Postfach zu Postfach. Unterlagen hängt die Besucherin selbst an, statt sie
+über ein Upload-Feld zu schicken. Und es wird kein JavaScript gebraucht: der
+Knopf ist ein reiner `mailto`-Link.
 
-**Ein Feld ergänzen oder umbenennen:** Das Skript liest die Beschriftung aus
-dem zugehörigen `<label>`. Ein neues Feld im Formular steht dadurch
-automatisch in der E-Mail — am JavaScript muss nichts geändert werden.
+**Was dabei zu beachten ist:**
 
-**Wenn später doch ein echter Formularversand gewünscht ist** (Eingang in
-einem Postfach ohne Zutun der Besucherin, Statistik, Dateiupload), braucht es
-ein serverseitiges Skript oder einen Formulardienst mit
-Auftragsverarbeitungsvertrag. Der Abschnitt 5 in `assets/js/main.js` wäre
-dann die Stelle, an der umgestellt wird.
+- Auf Geräten ohne eingerichtetes E-Mail-Programm passiert beim Klick nichts.
+  Deshalb steht direkt unter dem Knopf dauerhaft sichtbar die Adresse und der
+  WhatsApp-Link als zweiter Weg.
+- Anfragen erscheinen in keiner Statistik. Wer messen will, wie viele
+  Anfragen eingehen — etwa für Google-Ads-Conversions —, braucht einen
+  echten Formularversand.
+- Die Hürde ist etwas höher als bei einem Formular: Das E-Mail-Programm muss
+  sich öffnen, und getippt wird dort. Dafür sind die Anfragen erfahrungsgemäß
+  ausführlicher, und es kommt praktisch kein Spam an.
+
+**Text oder Empfängeradresse ändern:** in `kontakt.html` bzw. `en/contact.html`
+am Knopf `<a class="btn btn-rot btn-block mt-5" href="mailto:…">`. Die Adresse
+ist URL-kodiert, das heißt:
+
+| im Text | in der Adresse |
+| --- | --- |
+| neue Zeile | `%0A` |
+| Leerzeichen | `%20` |
+| `ä ö ü ß` | `%C3%A4 %C3%B6 %C3%BC %C3%9F` |
+| `:` | `%3A` |
+| `,` | `%2C` |
+| `( )` | `%28 %29` |
+| Trennung Betreff/Text | `&amp;body=` |
+
+Die abgefragten Zeilen stehen zusätzlich als sichtbare Liste über dem Knopf.
+**Beides muss zusammenpassen** — wer eine Zeile ergänzt, ergänzt sie an beiden
+Stellen.
+
+**Falls später doch ein echtes Formular gewünscht ist** (Eingang ohne Zutun
+der Besucherin, Statistik, Dateiupload): Die Formular-Komponenten sind im
+Design-System erhalten geblieben, Abschnitt 14 in `assets/css/style.css`.
+Gestalterisch wäre also nichts neu zu entwickeln, es braucht nur ein
+serverseitiges Skript oder einen Formulardienst mit
+Auftragsverarbeitungsvertrag.
+
+**Offener Punkt für die rechtliche Prüfung:** Die Datenschutzerklärung enthält
+noch den Abschnitt „Kontakt- und Anfrageformular". Da es kein Formular mehr
+gibt, sollte dieser Abschnitt auf den E-Mail-Kontakt umgeschrieben werden —
+das gehört in die anwaltliche Prüfung, nicht in die Umsetzung.
 
 Medizinische Unterlagen sollten in keinem Fall per unverschlüsselter E-Mail
 übertragen werden. Dafür ist ein gesonderter, gesicherter Upload nötig.
@@ -445,7 +472,7 @@ Nach demselben Muster, am Beispiel Türkisch:
 - Google Unternehmensprofil anlegen
 - Darstellung auf einem echten Mobilgerät prüfen
 - Ladezeiten mit PageSpeed Insights messen
-- Anfrageformular mit einer echten Anfrage testen, in beiden Sprachen
+- Anfrage-Knopf mit einer echten Anfrage testen, in beiden Sprachen
   (am Handy und am Rechner — öffnet sich das E-Mail-Programm?)
 - Sprachumschalter auf jeder Seite einmal durchklicken
 

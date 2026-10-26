@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact &amp; Free Assessment | Konan Cak International</title>
-<meta name="description" content="Request a free medical assessment by form, phone, WhatsApp or email – in English, German, Turkish or Arabic.">
+<meta name="description" content="Request a free medical assessment by email, phone or WhatsApp – in English, German, Turkish or Arabic.">
 <link rel="canonical" href="https://www.konancak-international.com/en/contact.html">
 <link rel="alternate" hreflang="de" href="https://www.konancak-international.com/kontakt.html">
 <link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/contact.html">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Konan Cak International">
 <meta property="og:title" content="Contact &amp; Free Assessment | Konan Cak International">
-<meta property="og:description" content="Request a free medical assessment by form, phone, WhatsApp or email – in English, German, Turkish or Arabic.">
+<meta property="og:description" content="Request a free medical assessment by email, phone or WhatsApp – in English, German, Turkish or Arabic.">
 <meta property="og:url" content="https://www.konancak-international.com/en/contact.html">
 <meta property="og:image" content="https://www.konancak-international.com/assets/images/og-startseite.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -79,7 +79,7 @@
     <div class="wrap">
       <p class="breadcrumb"><a href="index.html">Home</a> / Contact</p>
       <h1>Request an initial assessment</h1>
-      <p>Use this form to request a free, no-obligation initial assessment by our partner doctors. Describe your concern in a few sentences; you can send findings, X-rays or photos afterwards.</p>
+      <p>Request a free, no-obligation initial assessment by our partner doctors. One click opens a prepared email — you describe your concern in a few sentences and attach any findings, X-rays or photos straight away.</p>
     </div>
   </section>
 
@@ -89,61 +89,22 @@
         <div class="anfragekarte">
           <div class="anfragekarte-kopf">
             <strong>Your enquiry</strong>
-            <span class="anfragekarte-ref">All fields marked * are required</span>
+            <span class="anfragekarte-ref">Takes about two minutes</span>
           </div>
           <div class="anfragekarte-body">
-            <!-- data-mailto sets the recipient address. The action attribute is
-                 the fallback without JavaScript. Keep both addresses identical. -->
-            <form data-formular
-                  data-mailto="kontakt@konancak-international.com"
-                  action="mailto:kontakt@konancak-international.com"
-                  method="post" enctype="text/plain">
-              <div class="feld-reihe">
-                <div class="feld">
-                  <label for="k-vorname">First name *</label>
-                  <input type="text" id="k-vorname" name="vorname" autocomplete="given-name" required>
-                </div>
-                <div class="feld">
-                  <label for="k-nachname">Last name *</label>
-                  <input type="text" id="k-nachname" name="nachname" autocomplete="family-name" required>
-                </div>
-              </div>
-              <div class="feld-reihe">
-                <div class="feld">
-                  <label for="k-mail">Email *</label>
-                  <input type="email" id="k-mail" name="email" autocomplete="email" required>
-                </div>
-                <div class="feld">
-                  <label for="k-tel">Phone / WhatsApp</label>
-                  <input type="tel" id="k-tel" name="telefon" autocomplete="tel">
-                </div>
-              </div>
-              <div class="feld">
-                <label for="k-bereich">Treatment area *</label>
-                <select id="k-bereich" name="bereich" required>
-                  <option value="">Please choose</option>
-                  <option>Hair transplant</option>
-                  <option>Dentistry &amp; implants</option>
-                  <option>Aesthetic plastic surgery</option>
-                  <option>Ophthalmology &amp; laser eye surgery</option>
-                  <option>Orthopaedics &amp; joint replacement</option>
-                  <option>Bariatric surgery</option>
-                  <option>Preventive check-up</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="feld">
-                <label for="k-nachricht">Your concern *</label>
-                <textarea id="k-nachricht" name="nachricht" required placeholder="What is it about? What symptoms or wishes do you have, and since when?"></textarea>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="k-consent" name="consent" required>
-                <label for="k-consent">I have read the <a href="privacy.html">privacy policy</a> and agree to my data being processed. *</label>
-              </div>
-              <p class="formhinweis formhinweis-vorab">Clicking opens your email programme with the enquiry already filled in. You can check and add to it before sending. The website itself stores and transmits nothing.</p>
-              <button class="btn btn-rot btn-block" type="submit">Send enquiry by email</button>
-              <p class="formhinweis" data-formstatus role="status" hidden></p>
-            </form>
+            <p>One click opens your email programme with a prepared message. It already lists the details our partner doctors need for an initial assessment — you only fill in the lines:</p>
+            <ul class="pruefliste pruefliste-eng">
+              <li>First and last name</li>
+              <li>Phone or WhatsApp</li>
+              <li>Treatment area</li>
+              <li>What it is about: symptoms or wish, and since when</li>
+              <li>Preferred time frame</li>
+            </ul>
+            <!-- Prepared email. Recipient, subject and body all live in this
+                 address; when editing, keep it URL-encoded (%0A = new line). -->
+            <a class="btn btn-rot btn-block mt-5" href="mailto:kontakt@konancak-international.com?subject=Request%20for%20an%20initial%20assessment&amp;body=Hello%2C%0A%0AI%20would%20like%20to%20request%20a%20free%2C%20no-obligation%20initial%20assessment.%0A%0AFirst%20and%20last%20name%3A%0APhone%20%2F%20WhatsApp%3A%0ATreatment%20area%3A%0AWhat%20it%20is%20about%20%28symptoms%20or%20wish%2C%20and%20since%20when%29%3A%0APreferred%20time%20frame%3A%0A%0AI%20have%20attached%20any%20findings%2C%20X-rays%20or%20photos%20to%20this%20email%2C%20if%20available.%0A%0AKind%20regards%0A">Contact us now</a>
+            <p class="formhinweis">Attach any findings, X-rays or photos directly to the email. Your details do not pass through this website — they go from your mailbox to ours.</p>
+            <p class="formhinweis">No email programme set up? Write to <a href="mailto:kontakt@konancak-international.com">kontakt@konancak-international.com</a> or via <a href="https://wa.me/490000000000">WhatsApp</a>.</p>
           </div>
         </div>
       </div>
