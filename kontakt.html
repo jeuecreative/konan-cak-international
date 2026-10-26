@@ -92,7 +92,12 @@
             <span class="anfragekarte-ref">Alle Felder mit * sind Pflicht</span>
           </div>
           <div class="anfragekarte-body">
-            <form data-formular action="#" method="post" novalidate>
+            <!-- data-mailto steuert die Empfängeradresse. Das action-Attribut
+                 ist der Rückfallweg ohne JavaScript. Beide Adressen gleich halten. -->
+            <form data-formular
+                  data-mailto="kontakt@konancak-international.com"
+                  action="mailto:kontakt@konancak-international.com"
+                  method="post" enctype="text/plain">
               <div class="feld-reihe">
                 <div class="feld">
                   <label for="k-vorname">Vorname *</label>
@@ -135,7 +140,8 @@
                 <input type="checkbox" id="k-consent" name="consent" required>
                 <label for="k-consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden. *</label>
               </div>
-              <button class="btn btn-rot btn-block" type="submit">Anfrage senden</button>
+              <p class="formhinweis formhinweis-vorab">Mit dem Klick öffnet sich Ihr E-Mail-Programm mit der fertig ausgefüllten Anfrage. Sie können alles prüfen und ergänzen, bevor Sie die E-Mail absenden. Die Website speichert und überträgt nichts.</p>
+              <button class="btn btn-rot btn-block" type="submit">Anfrage per E-Mail senden</button>
               <p class="formhinweis" data-formstatus role="status" hidden></p>
             </form>
           </div>

@@ -39,7 +39,7 @@ konan-cak-international/
     ├── css/
     │   └── style.css
     ├── js/
-    │   ├── main.js         Navigation, Einblendungen, Formular
+    │   ├── main.js         Navigation, Einblendungen, Anfrage als E-Mail
     │   ├── suche.js        Behandlungssuche
     │   └── consent.js      Einwilligungsverwaltung
     └── images/
@@ -160,15 +160,58 @@ Seitenverhältnis und Auflösung. Benötigt werden zwölf Bilder:
 Beim Einsetzen bitte `width`, `height`, `alt` und `loading="lazy"` setzen —
 `alt` beschreibt, was zu sehen ist, sonst geht die Barrierefreiheit verloren.
 
-### 3.6 Formularversand
+### 3.6 Anfrageformular — Versand per E-Mail-Programm
 
-Das Anfrageformular ist vollständig gestaltet und geprüft, versendet aber noch
-nicht. Für den Versand wird ein serverseitiges Skript oder ein Formulardienst
-mit Auftragsverarbeitungsvertrag benötigt. Die Stelle ist in
-`assets/js/main.js` im Abschnitt „Formulare" kommentiert.
+Das Formular wird **nicht** über einen Server verschickt. Beim Klick auf
+„Anfrage per E-Mail senden" baut `assets/js/main.js` aus den Feldern Betreff
+und Text einer fertigen E-Mail und öffnet damit das E-Mail-Programm der
+Besucherin. Abgeschickt wird die Nachricht erst dort, von Hand.
 
-Medizinische Unterlagen sollten nicht per unverschlüsselter E-Mail übertragen
-werden. Dafür ist ein gesonderter, gesicherter Upload nötig.
+**Warum so:**
+
+- kein Server, kein Formulardienst, kein Auftragsverarbeitungsvertrag nötig
+- es laufen keine Gesundheitsdaten über die Website und über keinen fremden
+  Dienst — das Formular ist reine Vorlage, gespeichert wird nichts
+- die Anfrage landet direkt im Postfach, mit der echten Absenderadresse;
+  eine Antwort ist dadurch einfacher als bei einem Formulardienst
+- wer absendet, sieht vorher genau, was er verschickt
+
+**Was dabei beachtet werden muss:**
+
+- Auf Geräten ohne eingerichtetes E-Mail-Programm passiert beim Klick nichts
+  Sichtbares. Deshalb erscheint nach dem Absenden eine Meldung mit der
+  Adresse sowie ein Knopf „Angaben in die Zwischenablage kopieren".
+- Ältere E-Mail-Programme schneiden sehr lange Vorlagen ab. Das Skript
+  begrenzt die Länge daher auf 1 900 Zeichen und setzt bei Bedarf sichtbar
+  `[Text gekürzt — bitte im E-Mail-Programm ergänzen]` ans Ende.
+- Die Anfrage erscheint nicht in einer Statistik. Wenn gezählt werden soll,
+  wie viele Anfragen eingehen, geht das nur über die eingehenden E-Mails.
+
+**Empfängeradresse ändern:** in `kontakt.html` und `en/contact.html` am
+`<form>`-Element, dort stehen zwei Stellen mit derselben Adresse:
+
+```html
+<form data-formular
+      data-mailto="kontakt@konancak-international.com"
+      action="mailto:kontakt@konancak-international.com"
+      method="post" enctype="text/plain">
+```
+
+`data-mailto` nutzt das Skript, `action` ist der Rückfallweg, falls
+JavaScript abgeschaltet ist. Beide müssen gleich lauten.
+
+**Ein Feld ergänzen oder umbenennen:** Das Skript liest die Beschriftung aus
+dem zugehörigen `<label>`. Ein neues Feld im Formular steht dadurch
+automatisch in der E-Mail — am JavaScript muss nichts geändert werden.
+
+**Wenn später doch ein echter Formularversand gewünscht ist** (Eingang in
+einem Postfach ohne Zutun der Besucherin, Statistik, Dateiupload), braucht es
+ein serverseitiges Skript oder einen Formulardienst mit
+Auftragsverarbeitungsvertrag. Der Abschnitt 5 in `assets/js/main.js` wäre
+dann die Stelle, an der umgestellt wird.
+
+Medizinische Unterlagen sollten in keinem Fall per unverschlüsselter E-Mail
+übertragen werden. Dafür ist ein gesonderter, gesicherter Upload nötig.
 
 ---
 
@@ -402,7 +445,8 @@ Nach demselben Muster, am Beispiel Türkisch:
 - Google Unternehmensprofil anlegen
 - Darstellung auf einem echten Mobilgerät prüfen
 - Ladezeiten mit PageSpeed Insights messen
-- Formularversand mit einer echten Anfrage testen, in beiden Sprachen
+- Anfrageformular mit einer echten Anfrage testen, in beiden Sprachen
+  (am Handy und am Rechner — öffnet sich das E-Mail-Programm?)
 - Sprachumschalter auf jeder Seite einmal durchklicken
 
 ---

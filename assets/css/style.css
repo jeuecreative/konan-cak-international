@@ -860,6 +860,27 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 .checkbox label { font: inherit; text-transform: none; letter-spacing: 0; margin: 0; color: inherit; }
 
 .formhinweis { font-size: .75rem; color: var(--text-leise); margin-top: var(--space-4); }
+/* Die E-Mail-Adresse in der Statusmeldung bleibt als Link erkennbar. */
+.formhinweis a { color: var(--marine-600); }
+
+/* Hinweis direkt über dem Absendeknopf: erklärt, was beim Klick
+   passiert, damit das E-Mail-Programm niemanden überrascht.     */
+.formhinweis-vorab { margin-bottom: var(--space-4); margin-top: var(--space-5); }
+
+/* Ersatzknopf, falls kein E-Mail-Programm eingerichtet ist.
+   Wird erst nach dem Absenden eingefügt.                        */
+.form-ersatz { margin-top: var(--space-3); }
+
+/* Hilfsfeld für das Kopieren: muss im Dokument liegen und
+   markierbar sein, darf aber nicht sichtbar werden.             */
+.kopierfeld {
+  position: fixed;
+  top: -1000px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
 
 /* 15 CTA-BAND -------------------------------------------------------- */
 .ctaband {

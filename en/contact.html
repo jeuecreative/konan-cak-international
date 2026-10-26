@@ -92,7 +92,12 @@
             <span class="anfragekarte-ref">All fields marked * are required</span>
           </div>
           <div class="anfragekarte-body">
-            <form data-formular action="#" method="post" novalidate>
+            <!-- data-mailto sets the recipient address. The action attribute is
+                 the fallback without JavaScript. Keep both addresses identical. -->
+            <form data-formular
+                  data-mailto="kontakt@konancak-international.com"
+                  action="mailto:kontakt@konancak-international.com"
+                  method="post" enctype="text/plain">
               <div class="feld-reihe">
                 <div class="feld">
                   <label for="k-vorname">First name *</label>
@@ -135,7 +140,8 @@
                 <input type="checkbox" id="k-consent" name="consent" required>
                 <label for="k-consent">I have read the <a href="privacy.html">privacy policy</a> and agree to my data being processed. *</label>
               </div>
-              <button class="btn btn-rot btn-block" type="submit">Send enquiry</button>
+              <p class="formhinweis formhinweis-vorab">Clicking opens your email programme with the enquiry already filled in. You can check and add to it before sending. The website itself stores and transmits nothing.</p>
+              <button class="btn btn-rot btn-block" type="submit">Send enquiry by email</button>
               <p class="formhinweis" data-formstatus role="status" hidden></p>
             </form>
           </div>
