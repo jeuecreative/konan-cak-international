@@ -1,38 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.konancak-international.com/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.konancak-international.com/leistungen.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/leistungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/treatments.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/leistungen.html"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.konancak-international.com/ablauf.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/ablauf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/process.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/ablauf.html"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.konancak-international.com/faq.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/faq.html"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.konancak-international.com/ueber-uns.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/ueber-uns.html"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.konancak-international.com/kontakt.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/kontakt.html"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/treatments.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/leistungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/treatments.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/leistungen.html"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/process.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/ablauf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/process.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/ablauf.html"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/faq.html"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/ueber-uns.html"/>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.konancak-international.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.konancak-international.com/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.konancak-international.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.konancak-international.com/kontakt.html"/>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>

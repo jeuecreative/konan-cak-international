@@ -288,6 +288,42 @@ a:hover { color: var(--marine-600); }
 .topbar-notiz { display: flex; align-items: center; gap: .5rem; }
 .topbar-kontakt { display: flex; gap: var(--space-5); }
 
+
+/* Sprachumschalter in der Topbar */
+.sprachwahl {
+  display: flex;
+  align-items: center;
+  gap: .15rem;
+  flex: none;
+  font-family: var(--font-utility);
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+.sprachwahl a {
+  display: inline-block;
+  padding: .35rem .5rem;      /* Zielgröße mind. 24 px */
+  color: var(--auf-dunkel);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+.sprachwahl a:hover { color: #fff; background: rgba(255, 255, 255, .12); }
+.sprachwahl a[aria-current="true"] {
+  color: #fff;
+  font-weight: 700;
+  background: rgba(255, 255, 255, .14);
+}
+.sprachwahl a + a { position: relative; }
+.sprachwahl a + a::before {
+  content: "";
+  position: absolute;
+  left: -.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 11px;
+  background: rgba(255, 255, 255, .3);
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -1466,7 +1502,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 @media (max-width: 720px) {
   .topbar-notiz { display: none; }
-  .topbar-inner { justify-content: center; }
+  .topbar-inner { justify-content: space-between; gap: var(--space-3); }
   .topbar-kontakt { gap: var(--space-4); }
   .rail-stopps { grid-template-columns: repeat(2, 1fr); }
   .stimme blockquote { font-size: 1rem; }

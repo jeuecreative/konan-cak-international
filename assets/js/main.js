@@ -115,7 +115,10 @@
         }
 
         if (status) {
-          status.textContent = 'Formularversand ist noch nicht angebunden. Bitte serverseitiges Skript oder Formulardienst hinterlegen.';
+          var sprache = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase();
+          status.textContent = sprache === 'en'
+            ? 'Form delivery is not connected yet. Please add a server-side script or a form service.'
+            : 'Formularversand ist noch nicht angebunden. Bitte serverseitiges Skript oder Formulardienst hinterlegen.';
           status.hidden = false;
         }
       });

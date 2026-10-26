@@ -22,37 +22,83 @@
 (function () {
   'use strict';
 
+  /* -- 0. Sprache ----------------------------------------------------- */
+  /* Die Seite gibt ihre Sprache über <html lang> vor. Der Banner, der
+     Dialog und die Kategorien erscheinen dadurch automatisch in der
+     Sprache der Seite, auf der die Besucherin gerade ist.              */
+  var SPRACHE = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase();
+  if (SPRACHE !== 'en') SPRACHE = 'de';
+
+  var TEXTE = {
+    de: {
+      datenschutzSeite: 'datenschutz.html',
+      bannerTitel: 'Datenschutzeinstellungen',
+      bannerText: 'Wir verwenden Cookies und vergleichbare Technologien. Notwendige Cookies sind für den Betrieb der Website erforderlich. Weitere Cookies setzen wir nur mit Ihrer Einwilligung. Ihre Auswahl können Sie jederzeit ändern. Mehr dazu in der <a href="{datenschutz}">Datenschutzerklärung</a>.',
+      alleAkzeptieren: 'Alle akzeptieren',
+      nurNotwendige: 'Nur notwendige',
+      einstellungen: 'Einstellungen',
+      dialogTitel: 'Datenschutzeinstellungen',
+      dialogSchliessen: 'Einstellungen schließen',
+      dialogEinleitung: 'Entscheiden Sie, welche Kategorien Sie zulassen möchten. Ihre Auswahl gilt für sechs Monate und lässt sich jederzeit über den Link im Fußbereich ändern.',
+      immerAktiv: 'Immer aktiv',
+      auswahlSpeichern: 'Auswahl speichern',
+      fussLinks: '<a href="{datenschutz}">Datenschutzerklärung</a> · <a href="{impressum}">Impressum</a>',
+      impressumSeite: 'impressum.html',
+      externerInhalt: 'Externer Inhalt',
+      kategorien: [
+        { id: 'notwendig', titel: 'Notwendig', pflicht: true,
+          text: 'Erforderlich für den Betrieb der Website. Speichert ausschließlich Ihre Auswahl in diesem Fenster. Diese Kategorie lässt sich nicht abwählen.' },
+        { id: 'statistik', titel: 'Statistik', pflicht: false,
+          text: 'Hilft uns zu verstehen, wie die Website genutzt wird. Wird nur mit Ihrer Einwilligung geladen.' },
+        { id: 'marketing', titel: 'Marketing', pflicht: false,
+          text: 'Ermöglicht die Messung von Werbekampagnen. Wird nur mit Ihrer Einwilligung geladen.' },
+        { id: 'extern', titel: 'Externe Inhalte', pflicht: false,
+          text: 'Karten und eingebettete Inhalte von Drittanbietern. Beim Laden wird Ihre IP-Adresse an den Anbieter übertragen.' }
+      ]
+    },
+    en: {
+      datenschutzSeite: 'privacy.html',
+      bannerTitel: 'Privacy settings',
+      bannerText: 'We use cookies and comparable technologies. Necessary cookies are required to run the website. We only set further cookies with your consent. You can change your choice at any time. More in our <a href="{datenschutz}">privacy policy</a>.',
+      alleAkzeptieren: 'Accept all',
+      nurNotwendige: 'Necessary only',
+      einstellungen: 'Settings',
+      dialogTitel: 'Privacy settings',
+      dialogSchliessen: 'Close settings',
+      dialogEinleitung: 'Choose which categories you want to allow. Your choice applies for six months and can be changed at any time via the link in the footer.',
+      immerAktiv: 'Always active',
+      auswahlSpeichern: 'Save choice',
+      fussLinks: '<a href="{datenschutz}">Privacy policy</a> · <a href="{impressum}">Imprint</a>',
+      impressumSeite: 'imprint.html',
+      externerInhalt: 'External content',
+      kategorien: [
+        { id: 'notwendig', titel: 'Necessary', pflicht: true,
+          text: 'Required to run the website. Stores only your choice in this window. This category cannot be deselected.' },
+        { id: 'statistik', titel: 'Statistics', pflicht: false,
+          text: 'Helps us understand how the website is used. Only loaded with your consent.' },
+        { id: 'marketing', titel: 'Marketing', pflicht: false,
+          text: 'Allows advertising campaigns to be measured. Only loaded with your consent.' },
+        { id: 'extern', titel: 'External content', pflicht: false,
+          text: 'Maps and embedded content from third parties. Your IP address is transmitted to the provider when loading.' }
+      ]
+    }
+  };
+
+  var T = TEXTE[SPRACHE];
+
+  /* Die Rechtstexte liegen je Sprache in eigenen Dateien. Von einer
+     englischen Unterseite aus liegen sie im selben Ordner, von der
+     deutschen Startseite aus ebenfalls — beide Fassungen sind flach. */
+  function rechtslink(datei) {
+    return datei;
+  }
+
   /* -- 1. Konfiguration ---------------------------------------------- */
   var COOKIE_NAME = 'kc_consent';
   var COOKIE_TAGE = 180;
   var VERSION = 1; // bei Änderung der Dienste erhöhen: erzwingt erneute Abfrage
 
-  var KATEGORIEN = [
-    {
-      id: 'notwendig',
-      titel: 'Notwendig',
-      text: 'Erforderlich für den Betrieb der Website. Speichert ausschließlich Ihre Auswahl in diesem Fenster. Diese Kategorie lässt sich nicht abwählen.',
-      pflicht: true
-    },
-    {
-      id: 'statistik',
-      titel: 'Statistik',
-      text: 'Hilft uns zu verstehen, wie die Website genutzt wird. Wird nur mit Ihrer Einwilligung geladen.',
-      pflicht: false
-    },
-    {
-      id: 'marketing',
-      titel: 'Marketing',
-      text: 'Ermöglicht die Messung von Werbekampagnen. Wird nur mit Ihrer Einwilligung geladen.',
-      pflicht: false
-    },
-    {
-      id: 'extern',
-      titel: 'Externe Inhalte',
-      text: 'Karten und eingebettete Inhalte von Drittanbietern. Beim Laden wird Ihre IP-Adresse an den Anbieter übertragen.',
-      pflicht: false
-    }
-  ];
+  var KATEGORIEN = T.kategorien;
 
   /* -- 2. Speicherung ------------------------------------------------- */
   function cookieLesen(name) {
@@ -160,30 +206,30 @@
 
     var box = el('div', 'consent-box');
 
-    var titel = el('h2', 'consent-titel', 'Datenschutzeinstellungen');
+    var titel = el('h2', 'consent-titel', T.bannerTitel);
     titel.id = 'consent-titel';
 
     var text = el('p', 'consent-text');
     text.id = 'consent-text';
-    text.innerHTML = 'Wir verwenden Cookies und vergleichbare Technologien. Notwendige Cookies sind für den Betrieb der Website erforderlich. Weitere Cookies setzen wir nur mit Ihrer Einwilligung. Ihre Auswahl können Sie jederzeit ändern. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.';
+    text.innerHTML = T.bannerText.replace('{datenschutz}', rechtslink(T.datenschutzSeite));
 
     var aktionen = el('div', 'consent-aktionen');
 
-    var alle = el('button', 'btn btn-rot', 'Alle akzeptieren');
+    var alle = el('button', 'btn btn-rot', T.alleAkzeptieren);
     alle.type = 'button';
     alle.addEventListener('click', function () {
       entscheidungSpeichern({ notwendig: true, statistik: true, marketing: true, extern: true });
       bannerSchliessen();
     });
 
-    var nur = el('button', 'btn btn-linie', 'Nur notwendige');
+    var nur = el('button', 'btn btn-linie', T.nurNotwendige);
     nur.type = 'button';
     nur.addEventListener('click', function () {
       entscheidungSpeichern(standard());
       bannerSchliessen();
     });
 
-    var einst = el('button', 'consent-link', 'Einstellungen');
+    var einst = el('button', 'consent-link', T.einstellungen);
     einst.type = 'button';
     einst.addEventListener('click', function () { dialogOeffnen(); });
 
@@ -222,17 +268,17 @@
     box.setAttribute('aria-labelledby', 'consent-dialog-titel');
 
     var kopf = el('div', 'consent-dialog-kopf');
-    var titel = el('h2', null, 'Datenschutzeinstellungen');
+    var titel = el('h2', null, T.dialogTitel);
     titel.id = 'consent-dialog-titel';
     var schliessen = el('button', 'consent-schliessen', '×');
     schliessen.type = 'button';
-    schliessen.setAttribute('aria-label', 'Einstellungen schließen');
+    schliessen.setAttribute('aria-label', T.dialogSchliessen);
     schliessen.addEventListener('click', dialogSchliessen);
     kopf.appendChild(titel);
     kopf.appendChild(schliessen);
 
     var koerper = el('div', 'consent-dialog-body');
-    var einleitung = el('p', 'consent-text', 'Entscheiden Sie, welche Kategorien Sie zulassen möchten. Ihre Auswahl gilt für sechs Monate und lässt sich jederzeit über den Link im Fußbereich ändern.');
+    var einleitung = el('p', 'consent-text', T.dialogEinleitung);
     koerper.appendChild(einleitung);
 
     KATEGORIEN.forEach(function (k) {
@@ -250,7 +296,7 @@
       label.appendChild(box2);
       label.appendChild(spanTitel);
       kopfzeile.appendChild(label);
-      if (k.pflicht) kopfzeile.appendChild(el('span', 'consent-pflicht', 'Immer aktiv'));
+      if (k.pflicht) kopfzeile.appendChild(el('span', 'consent-pflicht', T.immerAktiv));
 
       zeile.appendChild(kopfzeile);
       zeile.appendChild(el('p', 'consent-kategorie-text', k.text));
@@ -259,7 +305,7 @@
 
     var fuss = el('div', 'consent-dialog-fuss');
 
-    var speichern = el('button', 'btn btn-rot', 'Auswahl speichern');
+    var speichern = el('button', 'btn btn-rot', T.auswahlSpeichern);
     speichern.type = 'button';
     speichern.addEventListener('click', function () {
       var d = standard();
@@ -272,7 +318,7 @@
       bannerSchliessen();
     });
 
-    var alle = el('button', 'btn btn-linie', 'Alle akzeptieren');
+    var alle = el('button', 'btn btn-linie', T.alleAkzeptieren);
     alle.type = 'button';
     alle.addEventListener('click', function () {
       entscheidungSpeichern({ notwendig: true, statistik: true, marketing: true, extern: true });
@@ -281,7 +327,9 @@
     });
 
     var links = el('p', 'consent-dialog-links');
-    links.innerHTML = '<a href="datenschutz.html">Datenschutzerklärung</a> · <a href="impressum.html">Impressum</a>';
+    links.innerHTML = T.fussLinks
+      .replace('{datenschutz}', rechtslink(T.datenschutzSeite))
+      .replace('{impressum}', rechtslink(T.impressumSeite));
 
     fuss.appendChild(speichern);
     fuss.appendChild(alle);
@@ -369,7 +417,7 @@
         var p = platzhalter[i];
         var rahmen = document.createElement('iframe');
         rahmen.src = p.getAttribute('data-src');
-        rahmen.title = p.getAttribute('data-titel') || 'Externer Inhalt';
+        rahmen.title = p.getAttribute('data-titel') || T.externerInhalt;
         rahmen.loading = 'lazy';
         rahmen.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
         rahmen.className = 'consent-iframe';
